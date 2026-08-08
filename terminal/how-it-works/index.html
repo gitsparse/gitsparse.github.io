@@ -1,0 +1,63 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4650224793268391">
+
+    <title>How git sparse-checkout actually works — gitsparse</title>
+    <meta name="description" content="A deep dive into blobless partial clones and sparse-checkout patterns, and how they let git fetch just a subfolder of a repository.">
+    <link rel="canonical" href="https://gitsparse.com/terminal/how-it-works">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="gitsparse">
+    <meta property="og:url" content="https://gitsparse.com/terminal/how-it-works">
+    <meta property="og:title" content="How git sparse-checkout actually works — gitsparse">
+    <meta property="og:description" content="A deep dive into blobless partial clones and sparse-checkout patterns, and how they let git fetch just a subfolder of a repository.">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="How git sparse-checkout actually works — gitsparse">
+    <meta name="twitter:description" content="A deep dive into blobless partial clones and sparse-checkout patterns, and how they let git fetch just a subfolder of a repository.">
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "gitsparse",
+        "url": "https://gitsparse.com/",
+        "description": "Download just a subfolder of a GitHub repository as a zip, without cloning the whole repo. Runs entirely in the browser.",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
+
+    <script type="text/javascript">
+      // Un-packs the path that public/404.html redirected here with, restoring the real
+      // URL via history.replaceState before the router boots. See
+      // https://github.com/rafgraph/spa-github-pages
+      (function (l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search
+            .slice(1)
+            .split('&')
+            .map(function (s) {
+              return s.replace(/~and~/g, '&');
+            })
+            .join('?');
+          window.history.replaceState(null, '', l.pathname.slice(0, -1) + decoded + l.hash);
+        }
+      })(window.location);
+    </script>
+    <script type="module" crossorigin="" src="/assets/index-CAFtQGKT.js"></script>
+    <link rel="stylesheet" crossorigin="" href="/assets/index-BZd_1tlo.css">
+  </head>
+  <body>
+    <div id="app" data-v-app=""><header data-v-5bc2dec6="" class="site-header"><div data-v-5bc2dec6="" class="site-header-inner"><a data-v-5bc2dec6="" href="/" class="brand"><span data-v-5bc2dec6="" class="brand-mark">◆</span><span data-v-5bc2dec6="">gitsparse</span></a><div data-v-5bc2dec6="" class="auth-status"><a data-v-5bc2dec6="" href="/auth" class="auth-link"><span data-v-5bc2dec6="" class="dot dot-off"></span> Sign in</a><!----></div></div></header><main data-v-5bc2dec6=""><div data-v-4fae4dad="" data-v-5bc2dec6="" class="explained-page"><a data-v-4fae4dad="" href="/terminal" class="back-link">← Back to instructions</a><h1 data-v-4fae4dad="">How the sparse clone actually works</h1><section data-v-4fae4dad="" class="card step"><h2 data-v-4fae4dad="">1. Deferring file contents: <code data-v-4fae4dad="">--filter=blob:none</code></h2><p data-v-4fae4dad=""> A git repo's history is built from three kinds of objects: commits, trees, and blobs. Trees are directory listings — the name, type, and hash of every entry — and blobs are the actual file contents. A normal clone downloads all three, for every commit in the history you fetch. </p><p data-v-4fae4dad=""><code data-v-4fae4dad="">--filter=blob:none</code> tells the server to send commits and trees as normal — so you get full history and know every filename that ever existed — but to hold back blobs. Git fetches a blob's content lazily, the moment it actually needs to put that file on disk. </p></section><section data-v-4fae4dad="" class="card step"><h2 data-v-4fae4dad="">2. Getting an exact folder match: <code data-v-4fae4dad="">--no-cone</code></h2><p data-v-4fae4dad=""> This is the part that's easy to get wrong. Git's <em data-v-4fae4dad="">default</em> sparse-checkout mode — "cone mode" — does not give you just the folder you ask for. If you run the more commonly documented <code data-v-4fae4dad="">git sparse-checkout set some/folder</code> in cone mode, git also checks out: </p><ul data-v-4fae4dad=""><li data-v-4fae4dad="">every file at the <strong data-v-4fae4dad="">root</strong> of the repository, and</li><li data-v-4fae4dad=""> the immediate files of <strong data-v-4fae4dad="">every directory</strong> on the path down to your folder. </li></ul><p data-v-4fae4dad=""> Cone mode is built that way on purpose — it's meant for "give me the normal top-level view, plus a deep dive into a couple of subprojects," which is a common monorepo pattern, and it's faster for git to evaluate at scale. But it means the checkout isn't exact. </p><p data-v-4fae4dad=""><code data-v-4fae4dad="">--no-cone</code> switches to plain pattern matching instead, so we can hand git one explicit pattern — <code data-v-4fae4dad="">/samples/rust/**</code> — meaning "everything under this path, recursively, and nothing else." No root files, no sibling directories. </p></section><section class="card step" data-v-4fae4dad=""><h2 data-v-4fae4dad="">3. Why <code data-v-4fae4dad="">git checkout</code> only downloads what you asked for</h2><p data-v-4fae4dad=""> Once the sparse-checkout pattern is set, running <code data-v-4fae4dad="">git checkout</code> walks the target commit's tree (already local, since trees aren't filtered), compares it against the pattern, and only materializes — and therefore only fetches the blob content for — the entries that match. Everything outside the pattern stays as a tree reference only: git knows it exists, but never asks the server for its content. </p></section><section class="card step" data-v-4fae4dad=""><h2 data-v-4fae4dad="">What you still get "for free"</h2><p data-v-4fae4dad=""> Because trees and commits were never filtered, you keep full commit history for the whole repository — <code data-v-4fae4dad="">git log</code>, <code data-v-4fae4dad="">git blame</code>, and browsing past revisions all work normally on the files you do have. And since nothing was permanently discarded, you can always expand later with <code data-v-4fae4dad="">git sparse-checkout disable</code> — git just fetches the additional blobs it's now missing, on demand, without a re-clone. </p></section></div></main><footer data-v-5bc2dec6="" class="site-footer"><div data-v-5bc2dec6="" class="site-footer-inner"><span data-v-5bc2dec6="">GitHub API rate limit status will appear here once you browse a repo.</span><span data-v-5bc2dec6="" class="sep">·</span><a data-v-5bc2dec6="" href="/legal" class="">Licenses &amp; liability</a><span data-v-5bc2dec6="" class="sep">·</span><a data-v-5bc2dec6="" href="/privacy" class="">Privacy policy</a><span data-v-5bc2dec6="" class="sep">·</span><a data-v-5bc2dec6="" href="https://github.com/gitsparse/gitsparse.github.io/issues" target="_blank" rel="noopener noreferrer">Contact us</a><span data-v-5bc2dec6="" class="sep">·</span><a data-v-5bc2dec6="" href="https://github.com/gitsparse/gitsparse/commit/8b6a1e7bdf6bcc2fef080df11fe97173feb3bd95" target="_blank" rel="noopener noreferrer">8b6a1e7</a></div></footer></div>
+  
+
+</body></html>

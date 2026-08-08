@@ -1,0 +1,63 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4650224793268391">
+
+    <title>Privacy policy — gitsparse</title>
+    <meta name="description" content="How gitsparse handles data: no backend, no tracking of your GitHub browsing, session-only auth tokens, and what Google AdSense collects.">
+    <link rel="canonical" href="https://gitsparse.com/privacy">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="gitsparse">
+    <meta property="og:url" content="https://gitsparse.com/privacy">
+    <meta property="og:title" content="Privacy policy — gitsparse">
+    <meta property="og:description" content="How gitsparse handles data: no backend, no tracking of your GitHub browsing, session-only auth tokens, and what Google AdSense collects.">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Privacy policy — gitsparse">
+    <meta name="twitter:description" content="How gitsparse handles data: no backend, no tracking of your GitHub browsing, session-only auth tokens, and what Google AdSense collects.">
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "gitsparse",
+        "url": "https://gitsparse.com/",
+        "description": "Download just a subfolder of a GitHub repository as a zip, without cloning the whole repo. Runs entirely in the browser.",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
+
+    <script type="text/javascript">
+      // Un-packs the path that public/404.html redirected here with, restoring the real
+      // URL via history.replaceState before the router boots. See
+      // https://github.com/rafgraph/spa-github-pages
+      (function (l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search
+            .slice(1)
+            .split('&')
+            .map(function (s) {
+              return s.replace(/~and~/g, '&');
+            })
+            .join('?');
+          window.history.replaceState(null, '', l.pathname.slice(0, -1) + decoded + l.hash);
+        }
+      })(window.location);
+    </script>
+    <script type="module" crossorigin="" src="/assets/index-CAFtQGKT.js"></script>
+    <link rel="stylesheet" crossorigin="" href="/assets/index-BZd_1tlo.css">
+  </head>
+  <body>
+    <div id="app" data-v-app=""><header data-v-5bc2dec6="" class="site-header"><div data-v-5bc2dec6="" class="site-header-inner"><a data-v-5bc2dec6="" href="/" class="brand"><span data-v-5bc2dec6="" class="brand-mark">◆</span><span data-v-5bc2dec6="">gitsparse</span></a><div data-v-5bc2dec6="" class="auth-status"><a data-v-5bc2dec6="" href="/auth" class="auth-link"><span data-v-5bc2dec6="" class="dot dot-off"></span> Sign in</a><!----></div></div></header><main data-v-5bc2dec6=""><div data-v-16683fd3="" data-v-5bc2dec6="" class="privacy-page"><h1 data-v-16683fd3="">Privacy policy</h1><p data-v-16683fd3="" class="tagline"> The short version: gitsparse has no server, so it can't store or process your data — everything happens in your own browser. The one exception is advertising, which is covered below. </p><p data-v-16683fd3="" class="effective-date">Effective date: August 8, 2026</p><section data-v-16683fd3="" class="card step"><h2 data-v-16683fd3="">How gitsparse itself handles data</h2><p data-v-16683fd3=""> gitsparse is a static site with no backend. Browsing a repository, estimating a zip's size, and building the actual download all run as JavaScript in your browser, talking directly to GitHub's own API and CDN (<code data-v-16683fd3="">api.github.com</code>, <code data-v-16683fd3="">raw.githubusercontent.com</code>). We never see the repos you browse, the files you download, or anything else about that activity — there's no server on our end for it to pass through. </p><p data-v-16683fd3=""> If you add a GitHub token on the <a data-v-16683fd3="" href="/auth" class="">sign-in page</a> to raise your API rate limit, it's stored only in your browser's session storage, sent only to GitHub's API, and cleared the moment you close the tab. We never receive, store, or log it. </p><p data-v-16683fd3=""> We don't run our own analytics, don't maintain a mailing list or user accounts, and don't set any cookies ourselves. There is nothing for us to sell, share, or retain, because we never collect it in the first place. </p></section><section class="card step" data-v-16683fd3=""><h2 data-v-16683fd3="">Cookies and similar technologies</h2><p data-v-16683fd3=""> gitsparse itself does not set cookies, local-storage tracking IDs, or any similar technology for analytics or tracking purposes. The one piece of browser storage the app uses — an optional GitHub token — is described above and is not a tracking technology; it never leaves your device except to authenticate directly with GitHub. </p><p data-v-16683fd3=""> The advertising on this site, described below, is served by Google and may set its own cookies. Those are set and controlled by Google, not by gitsparse. </p></section><section class="card step" data-v-16683fd3=""><h2 data-v-16683fd3="">Advertising (Google AdSense)</h2><p data-v-16683fd3=""> gitsparse shows ads through Google AdSense, a third-party advertising vendor. Unlike the rest of the site, this part is not under our control: Google and its advertising partners may use cookies, web beacons, and similar technologies to collect information about your visits to this and other websites, serve ads, measure and report on their performance, and personalize the ads shown to you based on your prior visits to this or other sites. </p><p data-v-16683fd3=""> Third-party vendors, including Google, use cookies to serve ads based on a user's prior visits to this website or other websites. Google's use of advertising cookies enables it and its partners to serve ads based on your visit to this site and/or other sites on the internet. </p><p data-v-16683fd3=""> You can opt out of personalized advertising by visiting <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" data-v-16683fd3="">Google Ads Settings</a>. You can also opt out of a third-party vendor's use of cookies for personalized advertising by visiting <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" data-v-16683fd3="">www.aboutads.info</a>, or, if you're in the EEA, UK, or Switzerland, via <a href="https://www.youronlinechoices.eu/" target="_blank" rel="noopener noreferrer" data-v-16683fd3="">Your Online Choices</a>. </p><p data-v-16683fd3="">How Google collects and uses this data is governed by Google's own policies, not ours:</p><ul data-v-16683fd3=""><li data-v-16683fd3=""><a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" data-v-16683fd3="">How Google uses data for advertising</a></li><li data-v-16683fd3=""><a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer" data-v-16683fd3="">How Google uses information from sites that use its services</a></li><li data-v-16683fd3=""><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" data-v-16683fd3="">Google Privacy Policy</a></li></ul></section><section class="card step" data-v-16683fd3=""><h2 data-v-16683fd3="">EEA, UK, and Switzerland (GDPR)</h2><p data-v-16683fd3=""> If you're visiting from the European Economic Area, the UK, or Switzerland, Google's ad products (including AdSense) rely on consent for personalized advertising in these regions. Where required, a consent prompt is shown before any personalized-advertising cookies are set, and you can withdraw or change that consent at any time via the controls it provides, or by using the opt-out links above. </p></section><section class="card step" data-v-16683fd3=""><h2 data-v-16683fd3="">Children's privacy</h2><p data-v-16683fd3=""> gitsparse is not directed at children under 13, and we do not knowingly collect personal information from children. Ad personalization for users known to be under the applicable age of consent is restricted by Google's own policies, independent of anything gitsparse does. </p></section><section class="card step" data-v-16683fd3=""><h2 data-v-16683fd3="">GitHub</h2><p data-v-16683fd3=""> Since your browser talks to GitHub directly, GitHub's own privacy policy applies to those requests — <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer" data-v-16683fd3="">GitHub's Privacy Statement</a>. </p></section><section class="card step" data-v-16683fd3=""><h2 data-v-16683fd3="">Data retention</h2><p data-v-16683fd3=""> Because gitsparse has no backend and no database, we retain nothing: there's no server-side log, record, or copy of the repos you browse, the files you download, or any token you enter. Anything gitsparse itself stores lives only in your browser's session storage and is gone as soon as you close the tab. </p></section><section class="card step" data-v-16683fd3=""><h2 data-v-16683fd3="">Changes to this policy</h2><p data-v-16683fd3=""> If this policy changes, we'll update the effective date above and the change will be visible in this repository's commit history — <a href="https://github.com/gitsparse/gitsparse/commits/main/src/Privacy.vue" target="_blank" rel="noopener noreferrer" data-v-16683fd3="">see the file's history</a>. </p></section><section class="card step" data-v-16683fd3=""><h2 data-v-16683fd3="">Contact</h2><p data-v-16683fd3=""> Open an issue on <a href="https://github.com/gitsparse/gitsparse/issues" target="_blank" rel="noopener noreferrer" data-v-16683fd3="">our GitHub repo</a> with any privacy question. </p></section></div></main><footer data-v-5bc2dec6="" class="site-footer"><div data-v-5bc2dec6="" class="site-footer-inner"><span data-v-5bc2dec6="">GitHub API rate limit status will appear here once you browse a repo.</span><span data-v-5bc2dec6="" class="sep">·</span><a data-v-5bc2dec6="" href="/legal" class="">Licenses &amp; liability</a><span data-v-5bc2dec6="" class="sep">·</span><a data-v-5bc2dec6="" href="/privacy" class="router-link-active router-link-exact-active" aria-current="page">Privacy policy</a><span data-v-5bc2dec6="" class="sep">·</span><a data-v-5bc2dec6="" href="https://github.com/gitsparse/gitsparse.github.io/issues" target="_blank" rel="noopener noreferrer">Contact us</a><span data-v-5bc2dec6="" class="sep">·</span><a data-v-5bc2dec6="" href="https://github.com/gitsparse/gitsparse/commit/8b6a1e7bdf6bcc2fef080df11fe97173feb3bd95" target="_blank" rel="noopener noreferrer">8b6a1e7</a></div></footer></div>
+  
+
+</body></html>

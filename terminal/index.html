@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4650224793268391">
+
+    <title>Run it yourself with git sparse-checkout — gitsparse</title>
+    <meta name="description" content="Terminal instructions for cloning just a subfolder of a GitHub repo using git's own sparse-checkout, no gitsparse required.">
+    <link rel="canonical" href="https://gitsparse.com/terminal">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="gitsparse">
+    <meta property="og:url" content="https://gitsparse.com/terminal">
+    <meta property="og:title" content="Run it yourself with git sparse-checkout — gitsparse">
+    <meta property="og:description" content="Terminal instructions for cloning just a subfolder of a GitHub repo using git's own sparse-checkout, no gitsparse required.">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Run it yourself with git sparse-checkout — gitsparse">
+    <meta name="twitter:description" content="Terminal instructions for cloning just a subfolder of a GitHub repo using git's own sparse-checkout, no gitsparse required.">
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "gitsparse",
+        "url": "https://gitsparse.com/",
+        "description": "Download just a subfolder of a GitHub repository as a zip, without cloning the whole repo. Runs entirely in the browser.",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
+
+    <script type="text/javascript">
+      // Un-packs the path that public/404.html redirected here with, restoring the real
+      // URL via history.replaceState before the router boots. See
+      // https://github.com/rafgraph/spa-github-pages
+      (function (l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search
+            .slice(1)
+            .split('&')
+            .map(function (s) {
+              return s.replace(/~and~/g, '&');
+            })
+            .join('?');
+          window.history.replaceState(null, '', l.pathname.slice(0, -1) + decoded + l.hash);
+        }
+      })(window.location);
+    </script>
+    <script type="module" crossorigin="" src="/assets/index-CAFtQGKT.js"></script>
+    <link rel="stylesheet" crossorigin="" href="/assets/index-BZd_1tlo.css">
+  </head>
+  <body>
+    <div id="app" data-v-app=""><header data-v-5bc2dec6="" class="site-header"><div data-v-5bc2dec6="" class="site-header-inner"><a data-v-5bc2dec6="" href="/" class="brand"><span data-v-5bc2dec6="" class="brand-mark">◆</span><span data-v-5bc2dec6="">gitsparse</span></a><div data-v-5bc2dec6="" class="auth-status"><a data-v-5bc2dec6="" href="/auth" class="auth-link"><span data-v-5bc2dec6="" class="dot dot-off"></span> Sign in</a><!----></div></div></header><main data-v-5bc2dec6=""><div data-v-55a815c2="" data-v-5bc2dec6="" class="terminal-page"><!----><h1 data-v-55a815c2="">Run this on your own machine</h1><p data-v-55a815c2="" class="target"><strong data-v-55a815c2="">/</strong><!----><!----></p><section data-v-55a815c2="" class="card step"><h2 data-v-55a815c2="">1. Clone just this folder</h2><p data-v-55a815c2=""> This clone defers downloading file contents, then narrows the checkout to an exact pattern matching only this folder — so the only files that end up on disk, and the only file contents git actually downloads, are the ones under <code data-v-55a815c2=""></code>. Nothing else from the repo touches your working tree. <a data-v-55a815c2="" href="/terminal/how-it-works" class="">How does that work?</a></p><button data-v-55a815c2="" type="button" class="code-block"><code data-v-55a815c2="">git clone --filter=blob:none --no-checkout https://github.com//.git
+cd </code><span data-v-55a815c2="" class="copy-hint">⧉ Copy</span></button></section><section data-v-55a815c2="" class="card step"><h2 data-v-55a815c2="">2. Want the rest of the repo too?</h2><p data-v-55a815c2="">Run this from inside the cloned folder to fetch everything else:</p><button data-v-55a815c2="" type="button" class="code-block"><code data-v-55a815c2="">git sparse-checkout disable</code><span data-v-55a815c2="" class="copy-hint">⧉ Copy</span></button></section><p data-v-55a815c2="" class="note"> These are plain <code data-v-55a815c2="">git</code> commands — they work the same in any terminal (Terminal on macOS/Linux, or PowerShell/Git Bash on Windows) as long as git is installed. Requires git 2.25 or newer for the <code data-v-55a815c2="">sparse-checkout</code> command; check with <code data-v-55a815c2="">git --version</code>. </p></div></main><footer data-v-5bc2dec6="" class="site-footer"><div data-v-5bc2dec6="" class="site-footer-inner"><span data-v-5bc2dec6="">GitHub API rate limit status will appear here once you browse a repo.</span><span data-v-5bc2dec6="" class="sep">·</span><a data-v-5bc2dec6="" href="/legal" class="">Licenses &amp; liability</a><span data-v-5bc2dec6="" class="sep">·</span><a data-v-5bc2dec6="" href="/privacy" class="">Privacy policy</a><span data-v-5bc2dec6="" class="sep">·</span><a data-v-5bc2dec6="" href="https://github.com/gitsparse/gitsparse.github.io/issues" target="_blank" rel="noopener noreferrer">Contact us</a><span data-v-5bc2dec6="" class="sep">·</span><a data-v-5bc2dec6="" href="https://github.com/gitsparse/gitsparse/commit/8b6a1e7bdf6bcc2fef080df11fe97173feb3bd95" target="_blank" rel="noopener noreferrer">8b6a1e7</a></div></footer></div>
+  
+
+</body></html>
