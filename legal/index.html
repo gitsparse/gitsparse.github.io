@@ -1,0 +1,60 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self'; img-src 'self'; connect-src 'self' https://api.github.com https://raw.githubusercontent.com https://*.google-analytics.com https://www.googletagmanager.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <!--
+      No CSP meta tag here — it's injected by the build-only Vite plugin in
+      vite.config.ts instead, so `npm run dev` isn't left unstyled (see that file for
+      why: dev-mode CSS HMR needs inline <style> tags, which a strict style-src blocks).
+    -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Licenses &amp; liability — gitsparse</title>
+    <meta name="description" content="Legal disclaimer for gitsparse: how original repository licenses carry over to your downloads, what an undetected license means, and our no-warranty terms.">
+    <link rel="canonical" href="https://gitsparse.com/legal">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="gitsparse">
+    <meta property="og:url" content="https://gitsparse.com/legal">
+    <meta property="og:title" content="Licenses &amp; liability — gitsparse">
+    <meta property="og:description" content="Legal disclaimer for gitsparse: how original repository licenses carry over to your downloads, what an undetected license means, and our no-warranty terms.">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Licenses &amp; liability — gitsparse">
+    <meta name="twitter:description" content="Legal disclaimer for gitsparse: how original repository licenses carry over to your downloads, what an undetected license means, and our no-warranty terms.">
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "gitsparse",
+        "url": "https://gitsparse.com/",
+        "description": "Download just a subfolder of a GitHub repository as a zip, without cloning the whole repo. Runs entirely in the browser.",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR"
+        }
+      }
+    </script>
+
+    <!--
+      No Google Analytics tag here — it's loaded dynamically by src/api/analytics.ts,
+      only once the cookie banner is accepted. See that file for why: a static tag here
+      would load unconditionally regardless of the visitor's choice, and its inline
+      config script would be blocked by the CSP anyway (no 'unsafe-inline' in script-src).
+    -->
+    <script src="/spa-decode.js"></script>
+    <script type="module" crossorigin="" src="/assets/index-Zhk2xZ3q.js"></script>
+    <link rel="stylesheet" crossorigin="" href="/assets/index-BF_KJ3vE.css">
+  </head>
+  <body>
+    <div id="app" data-v-app=""><header data-v-a8cf512c="" class="site-header"><div data-v-a8cf512c="" class="site-header-inner"><a data-v-a8cf512c="" href="/" class="brand"><img data-v-a8cf512c="" src="/favicon.svg" alt="" width="18" height="18" class="brand-mark"><span data-v-a8cf512c="">gitsparse</span></a><div data-v-a8cf512c="" class="auth-status"><a data-v-a8cf512c="" href="/auth" class="auth-link"><span data-v-a8cf512c="" class="dot dot-off"></span> Sign in</a><!----></div></div></header><main data-v-a8cf512c="" class="with-cookie-banner"><div data-v-8387b475="" data-v-a8cf512c="" class="legal-page"><h1 data-v-8387b475="">Licenses &amp; liability</h1><p class="tagline" data-v-8387b475=""> gitsparse just previews and repackages files that are already public on GitHub — it doesn't own, review, or relicense any of it. </p><section class="card step" data-v-8387b475=""><h2 data-v-8387b475="">Respect the original repository</h2><p data-v-8387b475=""> Every file you browse or download through gitsparse keeps whatever license (or lack of one) its source repository has. That means crediting the original authors, following the license's terms — permissive, copyleft, or otherwise — and not presenting someone else's work as your own. </p><p data-v-8387b475=""> When GitHub can identify a repository's license, gitsparse shows a small badge for it and includes the LICENSE file in your download even if it lives outside the folder you asked for, specifically so that context isn't lost. </p></section><section class="card step" data-v-8387b475=""><h2 data-v-8387b475="">No detected license doesn't mean no rights reserved</h2><p data-v-8387b475=""> If gitsparse doesn't show a license badge, GitHub simply couldn't detect one — that is <strong data-v-8387b475="">not</strong> the same as the code being free to use. Under default copyright rules, the author retains all rights unless a license says otherwise. When in doubt, check the repository yourself or ask the author. </p></section><section class="card step" data-v-8387b475=""><h2 data-v-8387b475="">No warranty, no liability</h2><p data-v-8387b475=""> gitsparse is provided "as is," without warranty of any kind, express or implied. The people behind gitsparse are not liable for any damages, legal claims, or other consequences arising from your use of this tool, or of any code, content, or license text you access or download through it. You're responsible for how you use what you download. </p></section></div></main><footer data-v-a8cf512c="" class="site-footer"><div data-v-a8cf512c="" class="cookie-row"><p data-v-a8cf512c="" class="cookie-text"> gitsparse uses a cookie to remember this choice, and — once accepted — Google Analytics sets its own for site analytics. <a data-v-a8cf512c="" href="/privacy" class="">Privacy policy</a></p><div data-v-a8cf512c="" class="cookie-actions"><button data-v-a8cf512c="" type="button" class="btn cookie-btn"> Decline </button><button data-v-a8cf512c="" type="button" class="btn btn-primary cookie-btn"> Accept </button></div></div><div data-v-a8cf512c="" class="site-footer-inner"><span data-v-a8cf512c="">GitHub API rate limit status will appear here once you browse a repo.</span><span data-v-a8cf512c="" class="sep">·</span><a data-v-a8cf512c="" href="/about" class="">Why gitsparse?</a><span data-v-a8cf512c="" class="sep">·</span><a data-v-a8cf512c="" href="/faq" class="">FAQ</a><span data-v-a8cf512c="" class="sep">·</span><a data-v-a8cf512c="" href="/examples" class="">Examples</a><span data-v-a8cf512c="" class="sep">·</span><a data-v-a8cf512c="" href="/legal" class="router-link-active router-link-exact-active" aria-current="page">Licenses &amp; liability</a><span data-v-a8cf512c="" class="sep">·</span><a data-v-a8cf512c="" href="/privacy" class="">Privacy policy</a><span data-v-a8cf512c="" class="sep">·</span><a data-v-a8cf512c="" href="/contact" class="">Contact us</a><span data-v-a8cf512c="" class="sep">·</span><span data-v-a8cf512c="">02d1b4e</span></div></footer></div>
+  
+
+</body></html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self'; img-src 'self'; connect-src 'self' https://api.github.com https://raw.githubusercontent.com https://*.google-analytics.com https://www.googletagmanager.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <!--
+      No CSP meta tag here — it's injected by the build-only Vite plugin in
+      vite.config.ts instead, so `npm run dev` isn't left unstyled (see that file for
+      why: dev-mode CSS HMR needs inline <style> tags, which a strict style-src blocks).
+    -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>How git sparse-checkout actually works — gitsparse</title>
+    <meta name="description" content="A deep dive into how blobless partial clones and sparse-checkout patterns actually work together, letting git fetch just a subfolder of a whole repository.">
+    <link rel="canonical" href="https://gitsparse.com/terminal/how-it-works">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="gitsparse">
+    <meta property="og:url" content="https://gitsparse.com/terminal/how-it-works">
+    <meta property="og:title" content="How git sparse-checkout actually works — gitsparse">
+    <meta property="og:description" content="A deep dive into how blobless partial clones and sparse-checkout patterns actually work together, letting git fetch just a subfolder of a whole repository.">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="How git sparse-checkout actually works — gitsparse">
+    <meta name="twitter:description" content="A deep dive into how blobless partial clones and sparse-checkout patterns actually work together, letting git fetch just a subfolder of a whole repository.">
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "gitsparse",
+        "url": "https://gitsparse.com/",
+        "description": "Download just a subfolder of a GitHub repository as a zip, without cloning the whole repo. Runs entirely in the browser.",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR"
+        }
+      }
+    </script>
+
+    <!--
+      No Google Analytics tag here — it's loaded dynamically by src/api/analytics.ts,
+      only once the cookie banner is accepted. See that file for why: a static tag here
+      would load unconditionally regardless of the visitor's choice, and its inline
+      config script would be blocked by the CSP anyway (no 'unsafe-inline' in script-src).
+    -->
+    <script src="/spa-decode.js"></script>
+    <script type="module" crossorigin="" src="/assets/index-Zhk2xZ3q.js"></script>
+    <link rel="stylesheet" crossorigin="" href="/assets/index-BF_KJ3vE.css">
+  </head>
+  <body>
+    <div id="app" data-v-app=""><header data-v-a8cf512c="" class="site-header"><div data-v-a8cf512c="" class="site-header-inner"><a data-v-a8cf512c="" href="/" class="brand"><img data-v-a8cf512c="" src="/favicon.svg" alt="" width="18" height="18" class="brand-mark"><span data-v-a8cf512c="">gitsparse</span></a><div data-v-a8cf512c="" class="auth-status"><a data-v-a8cf512c="" href="/auth" class="auth-link"><span data-v-a8cf512c="" class="dot dot-off"></span> Sign in</a><!----></div></div></header><main data-v-a8cf512c="" class="with-cookie-banner"><div data-v-4fae4dad="" data-v-a8cf512c="" class="explained-page"><a data-v-4fae4dad="" href="/terminal" class="back-link">← Back to instructions</a><h1 data-v-4fae4dad="">How the sparse clone actually works</h1><section data-v-4fae4dad="" class="card step"><h2 data-v-4fae4dad="">1. Deferring file contents: <code data-v-4fae4dad="">--filter=blob:none</code></h2><p data-v-4fae4dad=""> A git repo's history is built from three kinds of objects: commits, trees, and blobs. Trees are directory listings — the name, type, and hash of every entry — and blobs are the actual file contents. A normal clone downloads all three, for every commit in the history you fetch. </p><p data-v-4fae4dad=""><code data-v-4fae4dad="">--filter=blob:none</code> tells the server to send commits and trees as normal — so you get full history and know every filename that ever existed — but to hold back blobs. Git fetches a blob's content lazily, the moment it actually needs to put that file on disk. </p></section><section data-v-4fae4dad="" class="card step"><h2 data-v-4fae4dad="">2. Getting an exact folder match: <code data-v-4fae4dad="">--no-cone</code></h2><p data-v-4fae4dad=""> This is the part that's easy to get wrong. Git's <em data-v-4fae4dad="">default</em> sparse-checkout mode — "cone mode" — does not give you just the folder you ask for. If you run the more commonly documented <code data-v-4fae4dad="">git sparse-checkout set some/folder</code> in cone mode, git also checks out: </p><ul data-v-4fae4dad=""><li data-v-4fae4dad="">every file at the <strong data-v-4fae4dad="">root</strong> of the repository, and</li><li data-v-4fae4dad=""> the immediate files of <strong data-v-4fae4dad="">every directory</strong> on the path down to your folder. </li></ul><p data-v-4fae4dad=""> Cone mode is built that way on purpose — it's meant for "give me the normal top-level view, plus a deep dive into a couple of subprojects," which is a common monorepo pattern, and it's faster for git to evaluate at scale. But it means the checkout isn't exact. </p><p data-v-4fae4dad=""><code data-v-4fae4dad="">--no-cone</code> switches to plain pattern matching instead, so we can hand git one explicit pattern — <code data-v-4fae4dad="">/samples/rust/**</code> — meaning "everything under this path, recursively, and nothing else." No root files, no sibling directories. </p></section><section class="card step" data-v-4fae4dad=""><h2 data-v-4fae4dad="">3. Why <code data-v-4fae4dad="">git checkout</code> only downloads what you asked for</h2><p data-v-4fae4dad=""> Once the sparse-checkout pattern is set, running <code data-v-4fae4dad="">git checkout</code> walks the target commit's tree (already local, since trees aren't filtered), compares it against the pattern, and only materializes — and therefore only fetches the blob content for — the entries that match. Everything outside the pattern stays as a tree reference only: git knows it exists, but never asks the server for its content. </p></section><section class="card step" data-v-4fae4dad=""><h2 data-v-4fae4dad="">What you still get "for free"</h2><p data-v-4fae4dad=""> Because trees and commits were never filtered, you keep full commit history for the whole repository — <code data-v-4fae4dad="">git log</code>, <code data-v-4fae4dad="">git blame</code>, and browsing past revisions all work normally on the files you do have. And since nothing was permanently discarded, you can always expand later with <code data-v-4fae4dad="">git sparse-checkout disable</code> — git just fetches the additional blobs it's now missing, on demand, without a re-clone. </p></section></div></main><footer data-v-a8cf512c="" class="site-footer"><div data-v-a8cf512c="" class="cookie-row"><p data-v-a8cf512c="" class="cookie-text"> gitsparse uses a cookie to remember this choice, and — once accepted — Google Analytics sets its own for site analytics. <a data-v-a8cf512c="" href="/privacy" class="">Privacy policy</a></p><div data-v-a8cf512c="" class="cookie-actions"><button data-v-a8cf512c="" type="button" class="btn cookie-btn"> Decline </button><button data-v-a8cf512c="" type="button" class="btn btn-primary cookie-btn"> Accept </button></div></div><div data-v-a8cf512c="" class="site-footer-inner"><span data-v-a8cf512c="">GitHub API rate limit status will appear here once you browse a repo.</span><span data-v-a8cf512c="" class="sep">·</span><a data-v-a8cf512c="" href="/about" class="">Why gitsparse?</a><span data-v-a8cf512c="" class="sep">·</span><a data-v-a8cf512c="" href="/faq" class="">FAQ</a><span data-v-a8cf512c="" class="sep">·</span><a data-v-a8cf512c="" href="/examples" class="">Examples</a><span data-v-a8cf512c="" class="sep">·</span><a data-v-a8cf512c="" href="/legal" class="">Licenses &amp; liability</a><span data-v-a8cf512c="" class="sep">·</span><a data-v-a8cf512c="" href="/privacy" class="">Privacy policy</a><span data-v-a8cf512c="" class="sep">·</span><a data-v-a8cf512c="" href="/contact" class="">Contact us</a><span data-v-a8cf512c="" class="sep">·</span><span data-v-a8cf512c="">02d1b4e</span></div></footer></div>
+  
+
+</body></html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self'; img-src 'self'; connect-src 'self' https://api.github.com https://raw.githubusercontent.com https://*.google-analytics.com https://www.googletagmanager.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <!--
+      No CSP meta tag here — it's injected by the build-only Vite plugin in
+      vite.config.ts instead, so `npm run dev` isn't left unstyled (see that file for
+      why: dev-mode CSS HMR needs inline <style> tags, which a strict style-src blocks).
+    -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FAQ — gitsparse</title>
+    <meta name="description" content="Answers about gitsparse's safety, GitHub rate limits, private repos, size limits, and license handling — plus when plain git sparse-checkout is the better tool.">
+    <link rel="canonical" href="https://gitsparse.com/faq">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="gitsparse">
+    <meta property="og:url" content="https://gitsparse.com/faq">
+    <meta property="og:title" content="FAQ — gitsparse">
+    <meta property="og:description" content="Answers about gitsparse's safety, GitHub rate limits, private repos, size limits, and license handling — plus when plain git sparse-checkout is the better tool.">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="FAQ — gitsparse">
+    <meta name="twitter:description" content="Answers about gitsparse's safety, GitHub rate limits, private repos, size limits, and license handling — plus when plain git sparse-checkout is the better tool.">
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "gitsparse",
+        "url": "https://gitsparse.com/",
+        "description": "Download just a subfolder of a GitHub repository as a zip, without cloning the whole repo. Runs entirely in the browser.",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR"
+        }
+      }
+    </script>
+
+    <!--
+      No Google Analytics tag here — it's loaded dynamically by src/api/analytics.ts,
+      only once the cookie banner is accepted. See that file for why: a static tag here
+      would load unconditionally regardless of the visitor's choice, and its inline
+      config script would be blocked by the CSP anyway (no 'unsafe-inline' in script-src).
+    -->
+    <script src="/spa-decode.js"></script>
+    <script type="module" crossorigin="" src="/assets/index-Zhk2xZ3q.js"></script>
+    <link rel="stylesheet" crossorigin="" href="/assets/index-BF_KJ3vE.css">
+  </head>
+  <body>
+    <div id="app" data-v-app=""><header data-v-a8cf512c="" class="site-header"><div data-v-a8cf512c="" class="site-header-inner"><a data-v-a8cf512c="" href="/" class="brand"><img data-v-a8cf512c="" src="/favicon.svg" alt="" width="18" height="18" class="brand-mark"><span data-v-a8cf512c="">gitsparse</span></a><div data-v-a8cf512c="" class="auth-status"><a data-v-a8cf512c="" href="/auth" class="auth-link"><span data-v-a8cf512c="" class="dot dot-off"></span> Sign in</a><!----></div></div></header><main data-v-a8cf512c="" class="with-cookie-banner"><div data-v-7a5be914="" data-v-a8cf512c="" class="faq-page"><h1 data-v-7a5be914="">Frequently asked questions</h1><p data-v-7a5be914="" class="tagline">The specific stuff, not the generic stuff.</p><section data-v-7a5be914="" class="card step"><h2 data-v-7a5be914="">Safety &amp; privacy</h2><div data-v-7a5be914="" class="faq-item"><h3 data-v-7a5be914="">Does gitsparse ever see my code, or write or push anywhere?</h3><p data-v-7a5be914=""> No. gitsparse has no backend — every request goes straight from your browser to GitHub's own <code data-v-7a5be914="">api.github.com</code> and <code data-v-7a5be914="">raw.githubusercontent.com</code>. It only ever reads; it has no permission to push, write, or modify anything, even if you add a token. See the <a data-v-7a5be914="" href="/privacy" class="">privacy policy</a> for the full breakdown. </p></div><div data-v-7a5be914="" class="faq-item"><h3 data-v-7a5be914="">Do I need to sign in with a GitHub token?</h3><p data-v-7a5be914=""> No, browsing works without one — GitHub just caps unauthenticated requests at 60/hour, shared across everyone on your network. Adding a token on the <a data-v-7a5be914="" href="/auth" class="">sign-in page</a> raises that to 5,000/hour, just for your browser session. The token is stored only in session storage, cleared the moment you close the tab, and never sent anywhere but GitHub's own API. </p></div><div data-v-7a5be914="" class="faq-item"><h3 data-v-7a5be914="">What does the cookie banner actually control?</h3><p data-v-7a5be914=""> Just one thing: whether Google Analytics loads. gitsparse itself sets no tracking cookies. Declining, or not choosing yet, means Analytics never loads at all — not just hidden, never requested. Full detail on the <a data-v-7a5be914="" href="/privacy" class="">privacy policy</a>. </p></div></section><section data-v-7a5be914="" class="card step"><h2 data-v-7a5be914="">What it can and can't do</h2><div data-v-7a5be914="" class="faq-item"><h3 data-v-7a5be914="">Is there a size limit?</h3><p data-v-7a5be914=""> Yes — 10MB per download, shown as an estimate next to the Download ZIP button before you commit to it. If GitHub's own API response for a folder gets truncated (very large trees), gitsparse treats that as over the limit too, rather than risk shipping an incomplete zip. </p></div><div data-v-7a5be914="" class="faq-item"><h3 data-v-7a5be914="">Does it work on private repos?</h3><p data-v-7a5be914=""> Yes, with a token scoped to it. On the <a data-v-7a5be914="" href="/auth" class="">sign-in page</a>, create a token with "Repository access" set to the private repo you want (not the default Public Repositories), then add it there — browsing and downloading both work exactly the same way after that. </p></div><div data-v-7a5be914="" class="faq-item"><h3 data-v-7a5be914="">Can I download a single file, or just folders?</h3><p data-v-7a5be914=""> Folders (and whole repos) only, for now — paste a <code data-v-7a5be914="">.../tree/branch/path</code> URL. Single-file <code data-v-7a5be914="">.../blob/...</code> links aren't supported yet. </p></div><div data-v-7a5be914="" class="faq-item"><h3 data-v-7a5be914="">What happens to the LICENSE file if it's outside the folder I asked for?</h3><p data-v-7a5be914=""> gitsparse includes it anyway. If GitHub detects a license at the repo root and your folder doesn't already have its own file by that name, the root license gets added to your zip too, so that context isn't lost. See <a data-v-7a5be914="" href="/legal" class="">Licenses &amp; liability</a> for the full policy. </p></div></section><section data-v-7a5be914="" class="card step"><h2 data-v-7a5be914="">vs. plain git</h2><div data-v-7a5be914="" class="faq-item"><h3 data-v-7a5be914="">Why not just <code data-v-7a5be914="">git clone</code>?</h3><p data-v-7a5be914=""> You can! git's own sparse-checkout does this properly, and it's often faster for bigger folders. The <a data-v-7a5be914="" href="/terminal" class="">terminal instructions</a> page has the exact commands, and <a data-v-7a5be914="" href="/terminal/how-it-works" class="">how it works</a> covers what's actually happening under the hood. gitsparse exists because I could never remember those commands — if you can, the CLI is the better tool. </p></div><div data-v-7a5be914="" class="faq-item"><h3 data-v-7a5be914="">When does gitsparse make more sense than the CLI?</h3><p data-v-7a5be914=""> When you just want to look at or grab a small folder without a terminal handy — a phone, a locked-down machine, or you just don't want to think about git flags. For anything bigger, or if you need full history, the CLI route is usually better. </p></div></section></div></main><footer data-v-a8cf512c="" class="site-footer"><div data-v-a8cf512c="" class="cookie-row"><p data-v-a8cf512c="" class="cookie-text"> gitsparse uses a cookie to remember this choice, and — once accepted — Google Analytics sets its own for site analytics. <a data-v-a8cf512c="" href="/privacy" class="">Privacy policy</a></p><div data-v-a8cf512c="" class="cookie-actions"><button data-v-a8cf512c="" type="button" class="btn cookie-btn"> Decline </button><button data-v-a8cf512c="" type="button" class="btn btn-primary cookie-btn"> Accept </button></div></div><div data-v-a8cf512c="" class="site-footer-inner"><span data-v-a8cf512c="">GitHub API rate limit status will appear here once you browse a repo.</span><span data-v-a8cf512c="" class="sep">·</span><a data-v-a8cf512c="" href="/about" class="">Why gitsparse?</a><span data-v-a8cf512c="" class="sep">·</span><a data-v-a8cf512c="" href="/faq" class="router-link-active router-link-exact-active" aria-current="page">FAQ</a><span data-v-a8cf512c="" class="sep">·</span><a data-v-a8cf512c="" href="/examples" class="">Examples</a><span data-v-a8cf512c="" class="sep">·</span><a data-v-a8cf512c="" href="/legal" class="">Licenses &amp; liability</a><span data-v-a8cf512c="" class="sep">·</span><a data-v-a8cf512c="" href="/privacy" class="">Privacy policy</a><span data-v-a8cf512c="" class="sep">·</span><a data-v-a8cf512c="" href="/contact" class="">Contact us</a><span data-v-a8cf512c="" class="sep">·</span><span data-v-a8cf512c="">02d1b4e</span></div></footer></div>
+  
+
+</body></html>

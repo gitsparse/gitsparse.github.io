@@ -1,0 +1,60 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self'; img-src 'self'; connect-src 'self' https://api.github.com https://raw.githubusercontent.com https://*.google-analytics.com https://www.googletagmanager.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <!--
+      No CSP meta tag here — it's injected by the build-only Vite plugin in
+      vite.config.ts instead, so `npm run dev` isn't left unstyled (see that file for
+      why: dev-mode CSS HMR needs inline <style> tags, which a strict style-src blocks).
+    -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Examples — gitsparse</title>
+    <meta name="description" content="Real GitHub repos where downloading just one folder — a lesson, a starter template, a single day's challenge — beats cloning the whole thing to get it.">
+    <link rel="canonical" href="https://gitsparse.com/examples">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="gitsparse">
+    <meta property="og:url" content="https://gitsparse.com/examples">
+    <meta property="og:title" content="Examples — gitsparse">
+    <meta property="og:description" content="Real GitHub repos where downloading just one folder — a lesson, a starter template, a single day's challenge — beats cloning the whole thing to get it.">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Examples — gitsparse">
+    <meta name="twitter:description" content="Real GitHub repos where downloading just one folder — a lesson, a starter template, a single day's challenge — beats cloning the whole thing to get it.">
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "gitsparse",
+        "url": "https://gitsparse.com/",
+        "description": "Download just a subfolder of a GitHub repository as a zip, without cloning the whole repo. Runs entirely in the browser.",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR"
+        }
+      }
+    </script>
+
+    <!--
+      No Google Analytics tag here — it's loaded dynamically by src/api/analytics.ts,
+      only once the cookie banner is accepted. See that file for why: a static tag here
+      would load unconditionally regardless of the visitor's choice, and its inline
+      config script would be blocked by the CSP anyway (no 'unsafe-inline' in script-src).
+    -->
+    <script src="/spa-decode.js"></script>
+    <script type="module" crossorigin="" src="/assets/index-Zhk2xZ3q.js"></script>
+    <link rel="stylesheet" crossorigin="" href="/assets/index-BF_KJ3vE.css">
+  </head>
+  <body>
+    <div id="app" data-v-app=""><header data-v-a8cf512c="" class="site-header"><div data-v-a8cf512c="" class="site-header-inner"><a data-v-a8cf512c="" href="/" class="brand"><img data-v-a8cf512c="" src="/favicon.svg" alt="" width="18" height="18" class="brand-mark"><span data-v-a8cf512c="">gitsparse</span></a><div data-v-a8cf512c="" class="auth-status"><a data-v-a8cf512c="" href="/auth" class="auth-link"><span data-v-a8cf512c="" class="dot dot-off"></span> Sign in</a><!----></div></div></header><main data-v-a8cf512c="" class="with-cookie-banner"><div data-v-d222285b="" data-v-a8cf512c="" class="examples-page"><h1 data-v-d222285b="">Examples</h1><p data-v-d222285b="" class="tagline"> A few real repos where grabbing just one folder actually saves you something. </p><section data-v-d222285b="" class="card step"><h2 data-v-d222285b="">One lesson from a multi-part course</h2><p data-v-d222285b="">Course repos are often one lesson per folder, sometimes dozens deep. Grab just the lesson you're on instead of the whole curriculum.</p><a data-v-d222285b="" href="/microsoft/Web-Dev-For-Beginners/tree/main/5-browser-extension" class="example-link">Web-Dev-For-Beginners/5-browser-extension</a></section><section data-v-d222285b="" class="card step"><h2 data-v-d222285b="">One project from a repo that's really a folder of them</h2><p data-v-d222285b="">Some repos are really a collection of small, unrelated projects sharing one repo. Pull just the one you actually want.</p><a data-v-d222285b="" href="/bradtraversy/vanillawebprojects/tree/master/meal-finder" class="example-link">vanillawebprojects/meal-finder</a></section><section data-v-d222285b="" class="card step"><h2 data-v-d222285b="">One starter template out of a repo full of them</h2><p data-v-d222285b="">Boilerplate/starter repos often ship several variants side by side. Get the one you're following along with, not the rest.</p><a data-v-d222285b="" href="/vercel/next-learn/tree/main/basics/api-routes-starter" class="example-link">next-learn/basics/api-routes-starter</a></section><section data-v-d222285b="" class="card step"><h2 data-v-d222285b="">One day's challenge from a 30-day series</h2><p data-v-d222285b="">Daily-challenge repos are a folder per day. If you're only on day one, there's no reason to clone the other twenty-nine.</p><a data-v-d222285b="" href="/wesbos/JavaScript30/tree/master/01%20-%20JavaScript%20Drum%20Kit" class="example-link">JavaScript30/01 - JavaScript Drum Kit</a></section></div></main><footer data-v-a8cf512c="" class="site-footer"><div data-v-a8cf512c="" class="cookie-row"><p data-v-a8cf512c="" class="cookie-text"> gitsparse uses a cookie to remember this choice, and — once accepted — Google Analytics sets its own for site analytics. <a data-v-a8cf512c="" href="/privacy" class="">Privacy policy</a></p><div data-v-a8cf512c="" class="cookie-actions"><button data-v-a8cf512c="" type="button" class="btn cookie-btn"> Decline </button><button data-v-a8cf512c="" type="button" class="btn btn-primary cookie-btn"> Accept </button></div></div><div data-v-a8cf512c="" class="site-footer-inner"><span data-v-a8cf512c="">GitHub API rate limit status will appear here once you browse a repo.</span><span data-v-a8cf512c="" class="sep">·</span><a data-v-a8cf512c="" href="/about" class="">Why gitsparse?</a><span data-v-a8cf512c="" class="sep">·</span><a data-v-a8cf512c="" href="/faq" class="">FAQ</a><span data-v-a8cf512c="" class="sep">·</span><a data-v-a8cf512c="" href="/examples" class="router-link-active router-link-exact-active" aria-current="page">Examples</a><span data-v-a8cf512c="" class="sep">·</span><a data-v-a8cf512c="" href="/legal" class="">Licenses &amp; liability</a><span data-v-a8cf512c="" class="sep">·</span><a data-v-a8cf512c="" href="/privacy" class="">Privacy policy</a><span data-v-a8cf512c="" class="sep">·</span><a data-v-a8cf512c="" href="/contact" class="">Contact us</a><span data-v-a8cf512c="" class="sep">·</span><span data-v-a8cf512c="">02d1b4e</span></div></footer></div>
+  
+
+</body></html>
