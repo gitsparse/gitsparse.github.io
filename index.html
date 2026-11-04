@@ -1,0 +1,60 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self'; img-src 'self'; connect-src 'self' https://api.github.com https://raw.githubusercontent.com https://*.google-analytics.com https://www.googletagmanager.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <!--
+      No CSP meta tag here — it's injected by the build-only Vite plugin in
+      vite.config.ts instead, so `npm run dev` isn't left unstyled (see that file for
+      why: dev-mode CSS HMR needs inline <style> tags, which a strict style-src blocks).
+    -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>gitsparse — download just a folder from any GitHub repo</title>
+    <meta name="description" content="Paste a GitHub folder URL and gitsparse previews the files and zips up just that subfolder — no cloning the whole repo, no backend, entirely in your browser.">
+    <link rel="canonical" href="https://gitsparse.com/">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="gitsparse">
+    <meta property="og:url" content="https://gitsparse.com/">
+    <meta property="og:title" content="gitsparse — download just a folder from any GitHub repo">
+    <meta property="og:description" content="Paste a GitHub folder URL and gitsparse previews the files and zips up just that subfolder — no cloning the whole repo, no backend, entirely in your browser.">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="gitsparse — download just a folder from any GitHub repo">
+    <meta name="twitter:description" content="Paste a GitHub folder URL and gitsparse previews the files and zips up just that subfolder — no cloning the whole repo, no backend, entirely in your browser.">
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "gitsparse",
+        "url": "https://gitsparse.com/",
+        "description": "Download just a subfolder of a GitHub repository as a zip, without cloning the whole repo. Runs entirely in the browser.",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR"
+        }
+      }
+    </script>
+
+    <!--
+      No Google Analytics tag here — it's loaded dynamically by src/api/analytics.ts,
+      only once the cookie banner is accepted. See that file for why: a static tag here
+      would load unconditionally regardless of the visitor's choice, and its inline
+      config script would be blocked by the CSP anyway (no 'unsafe-inline' in script-src).
+    -->
+    <script src="/spa-decode.js"></script>
+    <script type="module" crossorigin="" src="/assets/index-C6wK7CNN.js"></script>
+    <link rel="stylesheet" crossorigin="" href="/assets/index-D0p1oX7K.css">
+  </head>
+  <body>
+    <div id="app" data-v-app=""><header data-v-88e9f3d3="" class="site-header"><div data-v-88e9f3d3="" class="site-header-inner"><a data-v-88e9f3d3="" href="/" class="router-link-active router-link-exact-active brand" aria-current="page"><img data-v-88e9f3d3="" src="/favicon.svg" alt="" width="18" height="18" class="brand-mark"><span data-v-88e9f3d3="">gitsparse</span></a><div data-v-88e9f3d3="" class="auth-status"><a data-v-88e9f3d3="" href="/auth" class="auth-link"><span data-v-88e9f3d3="" class="dot dot-off"></span> Sign in</a><!----></div></div></header><main data-v-88e9f3d3="" class="with-cookie-banner"><div data-v-2332c968="" data-v-88e9f3d3="" class="landing"><section data-v-2332c968="" class="hero"><h1 data-v-2332c968="">Download just a slice of a GitHub repo</h1><p data-v-2332c968="" class="tagline"> Paste a link to any folder on GitHub and gitsparse previews the files and zips up only that subfolder — no cloning the whole repo required. </p><form data-v-2332c968="" class="input-row"><input data-v-2332c968="" class="input" type="text" placeholder="&gt;&gt; github url here &lt;&lt;" autofocus=""><button data-v-2332c968="" type="submit" class="btn btn-primary">Go</button></form><!----><p data-v-2332c968="" class="example-hint"> Or see it in action: <a data-v-2332c968="" href="/vercel/next-learn/tree/main/basics/basics-final" class="">next-learn/basics/basics-final</a></p></section><section data-v-2332c968="" class="instructions card"><h2 data-v-2332c968="">How it works</h2><ol data-v-2332c968=""><li data-v-2332c968="">Paste any GitHub folder link into the box above, or</li><li data-v-2332c968=""> just swap the domain in your browser's address bar yourself — no need to visit GitHub first: </li></ol><div data-v-2332c968="" class="example"><div data-v-2332c968="" class="example-row"><span data-v-2332c968="" class="example-label">GitHub</span><code data-v-2332c968=""><span data-v-2332c968="" class="domain domain-from">github.com</span>/vercel/next-learn/tree/main/basics/basics-final</code></div><div data-v-2332c968="" class="example-arrow">↓</div><div data-v-2332c968="" class="example-row"><span data-v-2332c968="" class="example-label accent">gitsparse</span><code data-v-2332c968=""><span data-v-2332c968="" class="domain domain-to">gitsparse.com</span>/vercel/next-learn/tree/main/basics/basics-final</code></div></div><p data-v-2332c968="" class="note"> Works on a whole repo too — <code data-v-2332c968="">gitsparse.com/vercel/next-learn</code> browses everything from the root. </p></section><section data-v-2332c968="" class="instructions card"><h2 data-v-2332c968="">Why not just clone it?</h2><p data-v-2332c968=""> For big folders, or when you need full history, plain git is the better tool — <code data-v-2332c968="">git clone --filter=blob:none</code> plus <code data-v-2332c968="">sparse-checkout</code> does this properly; see the <a data-v-2332c968="" href="/terminal" class="">terminal instructions</a> for the exact commands. gitsparse trades that flexibility for zero setup: no terminal, no git install, works from a phone. It's for the smaller, more common case — you just want one folder, once, without thinking about git flags. More real examples of when that's worth it are on the <a data-v-2332c968="" href="/examples" class="">examples page</a>, and the <a data-v-2332c968="" href="/alternatives" class="">alternatives page</a> compares gitsparse against every other way people do this. </p></section></div></main><footer data-v-88e9f3d3="" class="site-footer"><div data-v-88e9f3d3="" class="cookie-row"><p data-v-88e9f3d3="" class="cookie-text"> gitsparse uses a cookie to remember this choice, and — once accepted — Google Analytics sets its own for site analytics. <a data-v-88e9f3d3="" href="/privacy" class="">Privacy policy</a></p><div data-v-88e9f3d3="" class="cookie-actions"><button data-v-88e9f3d3="" type="button" class="btn cookie-btn"> Decline </button><button data-v-88e9f3d3="" type="button" class="btn btn-primary cookie-btn"> Accept </button></div></div><div data-v-88e9f3d3="" class="site-footer-inner"><span data-v-88e9f3d3="">GitHub API rate limit status will appear here once you browse a repo.</span><span data-v-88e9f3d3="" class="sep">·</span><a data-v-88e9f3d3="" href="/about" class="">Why gitsparse?</a><span data-v-88e9f3d3="" class="sep">·</span><a data-v-88e9f3d3="" href="/faq" class="">FAQ</a><span data-v-88e9f3d3="" class="sep">·</span><a data-v-88e9f3d3="" href="/examples" class="">Examples</a><span data-v-88e9f3d3="" class="sep">·</span><a data-v-88e9f3d3="" href="/alternatives" class="">Alternatives</a><span data-v-88e9f3d3="" class="sep">·</span><a data-v-88e9f3d3="" href="/legal" class="">Licenses &amp; liability</a><span data-v-88e9f3d3="" class="sep">·</span><a data-v-88e9f3d3="" href="/privacy" class="">Privacy policy</a><span data-v-88e9f3d3="" class="sep">·</span><a data-v-88e9f3d3="" href="/contact" class="">Contact us</a><span data-v-88e9f3d3="" class="sep">·</span><span data-v-88e9f3d3="">911e65d</span></div></footer></div>
+  
+
+</body></html>

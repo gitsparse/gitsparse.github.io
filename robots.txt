@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /auth
+Disallow: /download
+
+Sitemap: https://gitsparse.com/sitemap.xml
